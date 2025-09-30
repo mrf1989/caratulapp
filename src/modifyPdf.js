@@ -1,4 +1,4 @@
-import { PDFDocument, StandardFonts, TextAlignment } from "pdf-lib";
+import { PDFDocument, StandardFonts } from "pdf-lib";
 import fs from "fs";
 
 export async function modifyPdf(str) {
@@ -19,5 +19,9 @@ export async function modifyPdf(str) {
     font: helveticaBoldFont,
   });
 
-  fs.writeFileSync(`./out/${str}.pdf`, await pdfDoc.save());
+  const outDir = "./out";
+
+  if (!fs.existsSync(outDir)) fs.mkdirSync(outDir);
+
+  fs.writeFileSync(`${outDir}/${str}.pdf`, await pdfDoc.save());
 }
