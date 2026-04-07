@@ -1,2 +1,5 @@
-/node_modules
+# npm
+node_modules
+package-lock.json
+
 /out
